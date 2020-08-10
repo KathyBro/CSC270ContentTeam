@@ -6,7 +6,7 @@ CREATE USER IF NOT EXISTS 'databaseUser'@'localhost' IDENTIFIED BY 'user123';
 
 GRANT ALL PRIVILEGES ON ContentTeamDatabase.* TO databaseUser@localhost;
 
-CREATE TABLE IF NOT EXISTS UserTable(id INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS UserTable(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(25) NOT NULL,
 password VARCHAR(25) NOT NULL,
 isAdmin BINARY NOT NULL,
@@ -28,3 +28,4 @@ Content VARCHAR(225)
 );
 
 --Sample Data
+INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('adminUser', 'adminpswd', 1, 1);
