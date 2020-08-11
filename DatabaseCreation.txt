@@ -29,3 +29,5 @@ Content VARCHAR(225)
 
 --Sample Data
 INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('adminUser', 'adminpswd', 1, 1);
+
+INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Home', 0, 0, 1);
