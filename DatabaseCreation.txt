@@ -24,7 +24,8 @@ isActive BINARY NOT NULL
 CREATE TABLE IF NOT EXISTS ContentTable(
 ParentPageId INT,
 Header VARCHAR(25),
-Content VARCHAR(225)
+Content VARCHAR(225),
+SortOrder INT
 );
 
 --Sample Data
