@@ -44,3 +44,14 @@ INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (7, 'Pia
 INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (1, 'Welcome Hobbyists', 'Welcome to our website! Here you can find info on hobbies! Look in about for ways to contact us for more hobbies!', 0);
 INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (3, 'About Us', 'Thank you very much for coming to our website!', 0);
 INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (3, '', 'You can contact us by phone with with 55-HOBBY or email us at HobbyContent@hobby.net', 1);
+
+INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (4, 'Our Mission', 'Our mission is to be able to expand the knowledge of  hobbies and to get a good grade with this assignment. You can change your mission at any time. Maybe our mission is to just only say that hobbies exist.', 0);
+
+
+INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (4, 'Our Mission', 'Our mission is to be able to expand the knowledge of  hobbies and to get a good grade with this assignment. You can change your mission at any time. Maybe our mission is to just only say that hobbies exist.', 0);
+
+
+INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (6, 'Description', 'Crocheting is similar to knitting and is often confused from it. However, there are key differences. Crocheting requires only having one hook being used. There are different types of hooks because there are different types of yarn.', 0);
+
+
+INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (6, 'Item List', 'Yarn, crochet hook, and probably two hands', 0);
