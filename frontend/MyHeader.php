@@ -38,5 +38,76 @@ else
 <nav>
     <?php
         //List of pages
+        $dbConn = ConnGet();
+        $webPages = GetPagesWithChildren($dbConn);
+        $contentArray = mySqli_fetch_all($webPages, MYSQLI_ASSOC);
+        $linkTemplate = "/Index.php?PageId=";
+
+        foreach ($contentArray as $index => $row) {
+            //Check if first element
+            if ($index == 0) {
+                //Check if the next element is not a child of this one
+                if ($contentArray[$index + 1]["Child Id"] == "None") {
+                    echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                }
+                //If the next element is a child (Since it's sorted to have all children be placed after the parent)
+                else {
+                    echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                    echo "<div class='Drop_Down_Button'>^</div>";
+                    echo "<div class='Drop_Down_Menu'>";
+                }
+            }
+            //check if any other element
+            elseif ($index != sizeof($contentArray) - 1) {
+                
+                if ($contentArray[$index - 1]["Child Id"] != "None") {
+                    if ($contentArray[$index]["Child Id"] != "None") {
+                        if ($contentArray[$index + 1]["Child Id"] != "None") {
+                            echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                        }
+                        else {
+                            echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                            echo "</div>";
+                        }
+                    }
+                    elseif ($contentArray[$index + 1]["Child Id"] != "None") {
+                        echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                        echo "<div class='Drop_Down_Button'>^</div>";
+                        echo "<div class='Drop_Down_Menu'>";
+                    }
+                    else {
+                        echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                    }
+                }
+                elseif ($contentArray[$index]["Child Id"] != "None") {
+                    if($contentArray[$index + 1]["Child Id"] != "None") {
+                        echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                    }
+                    else {
+                        echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                        echo "</div>";
+                    }
+                }
+                elseif ($contentArray[$index + 1]["Child Id"] != "None") {
+                    echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                    echo "<div class='Drop_Down_Button'>^</div>";
+                    echo "<div class='Drop_Down_Menu'>";
+                }
+                else {
+                    echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                }
+            }
+            //If last element
+            else {
+                if ($contentArray[$index]["Child Id"] != "None") {
+                    echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                    echo "</div>";
+                }
+                else {
+                    echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                }
+            }
+        }
+
     ?>
 </nav>
