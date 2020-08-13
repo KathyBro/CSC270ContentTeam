@@ -13,12 +13,16 @@
     <?php 
         //content creation code here
         $dbResponse = GetPageContentAndActivityById($dbConn, $PageId);
-        $returnArray = mySqli_fetch_assoc($dbResponse);
-        $header = $returnArray["Header"];
-        $content = $returnArray["Content"];
-
-        echo "<h1>" . $header . "</h1>";
-        echo "<p>" . $content . "</p>";
+        $contentArray = mySqli_fetch_all($dbResponse, MYSQLI_ASSOC);
+        //Test
+        foreach ($contentArray as $index => $contentRow) {
+            foreach ($contentRow as $key => $value) {
+                if($key == "Header" && $value != "")
+                    echo "<h1>" . $value . "</h1>";
+                elseif($key == "Content" && $value != "")
+                    echo "<p>" . $value . "</p>";
+            }
+        }      
     ?>
 </div>
 
