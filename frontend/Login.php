@@ -14,6 +14,7 @@ if(!isset($_SESSION['userId'])) {
 
         $userInfo = json_decode(Login($username, $password), true);
 
+        //Setting up the userId and the admin boolean.
         $_SESSION['userId'] = $userInfo[0]["id"];
         $_SESSION['isAdmin'] = $userInfo[0]["isAdmin"];
 

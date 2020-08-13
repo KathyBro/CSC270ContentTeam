@@ -22,6 +22,7 @@ isActive BINARY NOT NULL
 --0 is false, 1 is true
 
 CREATE TABLE IF NOT EXISTS ContentTable(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 ParentPageId INT,
 Header VARCHAR(25),
 Content VARCHAR(225),
@@ -30,5 +31,12 @@ SortOrder INT
 
 --Sample Data
 INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('adminUser', 'adminpswd', 1, 1);
+INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('RandomGuy', 'randompass', 0, 1);
 
 INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Home', 0, 0, 1);
+INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Hobbies', 0, 2, 1);
+INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('About', 0, 1, 1);
+INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Mission', 3, 0, 1);
+INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Fishing', 2, 0, 1);
+INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Crochet', 2, 1, 1);
+INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Piano', 2, 2, 1);

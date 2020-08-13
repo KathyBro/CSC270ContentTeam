@@ -23,4 +23,18 @@ function FindUser($dbConn, $username, $password)
     return mysqli_query($dbConn, $query);
 }
 
+function ReturnWebPages($dbConn)
+{
+    $query = "SELECT * FROM WebPages;";
+
+    return mysqli_query($dbConn, $query);
+}
+
+function GetPageContentAndActivityById($dbConn, $id)
+{
+    $query = "SELECT ct.Header, ct.Content, wp.isActive, wp.Title, ct.id FROM ContentTable ct JOIN WebPages wp ON wp.id = ct.ParentPageId WHERE ct.ParentPageId=" . $id . " order by ct.SortOrder asc;";
+
+    return mysqli_query($dbConn, $query);
+}
+
 ?>
