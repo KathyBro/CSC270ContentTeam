@@ -64,7 +64,17 @@ else
         ChangeWebPageInformation($_POST['active'], $_POST['Title'], $_POST['PageId']);
 
         //Change the content
-        echo var_dump($_POST);
+        //We need to find the id
+        $keys = array_keys($_POST);
+        for($i = 3; $i < sizeof($keys) - 1; $i+= 2)
+        {
+            $contentid = substr($keys[$i], 6);
+            $header = $_POST[$keys[$i]]; //Header
+            $content = $_POST[$keys[$i + 1]]; //Content
+            ChangeContentInformation($contentid, $header, $content);
+        }
+
+        echo "Changes Saved!";
     }
 
     

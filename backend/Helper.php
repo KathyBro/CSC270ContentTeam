@@ -64,6 +64,15 @@
         mysqli_close($dbConn);
     }
 
+    function ChangeContentInformation($id, $header, $content)
+    {
+        $dbConn = ConnGet();
+
+        UpdateContentTable($dbConn, $id, $header, $content);
+
+        mysqli_close($dbConn);
+    }
+
 
 
 

@@ -44,4 +44,11 @@ function ChangeWebPageTitleAndActivity($dbConn, $activity, $title, $id)
     return mysqli_query($dbConn, $query);
 }
 
+function UpdateContentTable($dbConn, $id, $header, $content)
+{
+    $query = "UPDATE ContentTable SET Header=\"" . $header . "\", Content=\"" . $content . "\" WHERE id=\"" . $id . "\";";
+
+    return mysqli_query($dbConn, $query);
+}
+
 ?>
