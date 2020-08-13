@@ -33,10 +33,14 @@ SortOrder INT
 INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('adminUser', 'adminpswd', 1, 1);
 INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('RandomGuy', 'randompass', 0, 1);
 
-INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Home', 0, 0, 1);
-INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Hobbies', 0, 2, 1);
-INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('About', 0, 1, 1);
-INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Mission', 3, 0, 1);
-INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Fishing', 2, 0, 1);
-INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Crochet', 2, 1, 1);
-INSERT INTO WebPages(Title, ParentPage, SortOrder, isActive) VALUES ('Piano', 2, 2, 1);
+INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (1, 'Home', 0, 0, 1);
+INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (2, 'Hobbies', 0, 2, 1);
+INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (3, 'About', 0, 1, 1);
+INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (4, 'Mission', 3, 0, 1);
+INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (5, 'Fishing', 2, 0, 1);
+INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (6, 'Crochet', 2, 1, 1);
+INSERT INTO WebPages(id, Title, ParentPage, SortOrder, isActive) VALUES (7, 'Piano', 2, 2, 1);
+
+INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (1, 'Welcome Hobbyists', 'Welcome to our website! Here you can find info on hobbies! Look in about for ways to contact us for more hobbies!', 0);
+INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (3, 'About Us', 'Thank you very much for coming to our website!', 0);
+INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (3, '', 'You can contact us by phone with with 55-HOBBY or email us at HobbyContent@hobby.net', 1);
