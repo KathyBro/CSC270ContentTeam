@@ -15,5 +15,12 @@ function ConnGet() {
     return $dbConn;
 }
 
+function FindUser($dbConn, $username, $password)
+{
+    $query = "SELECT isAdmin FROM UserTable WHERE username=\"" . $username .
+    "\" AND password=\"" . $password . "\";";
+
+    return mysqli_query($dbConn, $query);
+}
 
 ?>
