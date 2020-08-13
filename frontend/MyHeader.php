@@ -3,7 +3,6 @@
 
     include_once "DbConnector.php";
     include_once "Helper.php";
-    $title = "Content Website";
     //$listOfHobbies <- needed for Nav generation
 ?>
 
@@ -33,6 +32,8 @@ else
 </head>
 
 <body>
+
+<h1><?php?></h1>
 
 <nav>
     <a href="">Home</a>
