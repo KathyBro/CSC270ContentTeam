@@ -24,7 +24,7 @@ else
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?php echo $title ?></title>
+    <title><?php echo $title?></title>
     <!-- We'll need to change the style based on admin's selection -->
     <?php
         echo '<link rel="stylesheet" type="text/css" href="' . $styleChoice . 'Style.css">';
