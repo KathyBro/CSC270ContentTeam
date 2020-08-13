@@ -33,21 +33,10 @@ else
 
 <body>
 
-<h1><?php?></h1>
+<h1>Content Hobbyists</h1>
 
 <nav>
-    <a href="">Home</a>
-    <a href="">About</a>
-    <div id="AboutDropButton" class="dropDownButton"></div>
-    <div id="AboutDropDown" class="dropDownList">
-        <a href="">About</a>
-    </div>
-    <a href="">Hobbies</a>
-    <div id="HobbyDropButton" class="dropDownButton"></div>
-    <div id="HobbyDropDown" class="dropDownList">
-        <?php
-            //loop through hobbies
-                //place links here
-        ?>
-    </div>
+    <?php
+        //List of pages
+    ?>
 </nav>
