@@ -3,6 +3,7 @@
 
     include_once "..\backend\DbConnector.php";
     include_once "..\backend\Helper.php";
+    //$listOfHobbies <- needed for Nav generation
 ?>
 
 <?php
@@ -31,3 +32,22 @@ else
 </head>
 
 <body>
+
+<h1><?php?></h1>
+
+<nav>
+    <a href="">Home</a>
+    <a href="">About</a>
+    <div id="AboutDropButton" class="dropDownButton"></div>
+    <div id="AboutDropDown" class="dropDownList">
+        <a href="">About</a>
+    </div>
+    <a href="">Hobbies</a>
+    <div id="HobbyDropButton" class="dropDownButton"></div>
+    <div id="HobbyDropDown" class="dropDownList">
+        <?php
+            //loop through hobbies
+                //place links here
+        ?>
+    </div>
+</nav>
