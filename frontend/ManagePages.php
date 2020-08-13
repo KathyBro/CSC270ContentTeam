@@ -7,35 +7,47 @@ include_once "..\backend\Helper.php";
 
 <?php
 
-if(isset($_POST['submit']))
+if(isset($_POST['pageTitleId']))
 { //They have selected a page they want to change, need to fill out info
     try {
         $id = (int)$_POST['pageTitleId'];
         $activeHeaderContentArray = GetPageContentById($id);
         //0, 0 = isActive
         //0, 1 = Title
+        //0, 2 = WebPageId
         //index, 0 = Header
         //index, 1 = Content
+        //index, 2 = ContentId;
 
         //We need to have a form
         echo "
         <form method=\"post\" action=\"/frontend/ManagePages.php\">
         ";
+        echo "<input type=\"hidden\" name=\"PageId\" value=\"" . $activeHeaderContentArray[0][2] . "\">";
         //Input box for the title
         echo "<label>Title:</label>";
         echo "<input type=\"text\" name=\"Title\" value=\"" . $activeHeaderContentArray[0][1] . "\"><br/><br/>";
 
         //Radio button for isActive
         echo "<label>Active</label>";
-        echo "<input type=\"radio\" name=\"active\" value=\"True\" "; if($activeHeaderContentArray[0][0] == 1) { echo "checked";} echo ">";
+        echo "<input type=\"radio\" name=\"active\" value=\"1\" "; if($activeHeaderContentArray[0][0] == 1) { echo "checked";} echo ">";
         echo "<label>InActive</label>";
-        echo "<input type=\"radio\" name=\"active\" value=\"False\" "; if ($activeHeaderContentArray[0][0] == 0) { echo "checked";} echo ">";
+        echo "<input type=\"radio\" name=\"active\" value=\"0\" "; if ($activeHeaderContentArray[0][0] == 0) { echo "checked";} echo "><br/>";
 
         //Now input boxes for the header and the content in a loop
         for ($i = 1; $i < sizeof($activeHeaderContentArray); $i++)
         {
             //Header box
+            echo "<label>Header</label>";
+            echo "<input type=\"text\" name=\"Header" . $activeHeaderContentArray[$i][2] . "\" value=\"" . $activeHeaderContentArray[$i][0] . "\"><br/>";
+
+            //Content box
+            echo "<label>Content</label>";
+            echo "<textarea rows=\"5\" cols=\"50\" name=\"Content" . $activeHeaderContentArray[$i][2] . "\">" . $activeHeaderContentArray[$i][1] . "</textarea><br/>";
         }
+
+        echo '<button type="submit" name="submit" value="submit">Submit</button>';
+        echo '</form>';
     }
     catch (Exception $e)
     {
@@ -44,7 +56,19 @@ if(isset($_POST['submit']))
 
 }
 else
-{ //If we don't know what page we are changing yet, select one
+{ 
+    //They might have changed some values in the page
+    if(isset($_POST['submit']))
+    {
+        //Check if they changed the value of activity. This is based in the webpage table.
+        ChangeWebPageInformation($_POST['active'], $_POST['Title'], $_POST['PageId']);
+
+        //Change the content
+        echo var_dump($_POST);
+    }
+
+    
+    //If we don't know what page we are changing yet, select one
     //Gotta get all the different pages
     $pageArray = GetAllPageTitles();
 

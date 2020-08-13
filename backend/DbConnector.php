@@ -32,7 +32,14 @@ function ReturnWebPages($dbConn)
 
 function GetPageContentAndActivityById($dbConn, $id)
 {
-    $query = "SELECT ct.Header, ct.Content, wp.isActive, wp.Title, ct.id FROM ContentTable ct JOIN WebPages wp ON wp.id = ct.ParentPageId WHERE ct.ParentPageId=" . $id . " order by ct.SortOrder asc;";
+    $query = "SELECT ct.Header, ct.Content, wp.isActive, wp.Title, ct.id, wp.id FROM ContentTable ct JOIN WebPages wp ON wp.id = ct.ParentPageId WHERE ct.ParentPageId=" . $id . " order by ct.SortOrder asc;";
+
+    return mysqli_query($dbConn, $query);
+}
+
+function ChangeWebPageTitleAndActivity($dbConn, $activity, $title, $id)
+{
+    $query = "UPDATE WebPages SET isActive=" . $activity . ", Title=\"" . $title . " WHERE id=" . $id . ";";
 
     return mysqli_query($dbConn, $query);
 }

@@ -46,12 +46,22 @@
             $returningArray[$i][0] = $row[0]; //Header
             $returningArray[$i][1] = $row[1]; //Content
             $returningArray[0][1] = $row[3]; //Title
-            $returningArray[$i][2] = $row[4]; //Id
+            $returningArray[$i][2] = $row[4]; //ContentId
+            $returningArray[0][2] = $row[5]; //WebPageId
             $i++;
         }
 
         mysqli_close($dbConn);
         return $returningArray;
+    }
+
+    function ChangeWebPageInformation($activity, $title, $id)
+    {
+        $dbConn = ConnGet();
+
+        ChangeWebPageTitleAndActivity($dbConn, $activity, $title, $id);
+
+        mysqli_close($dbConn);
     }
 
 
