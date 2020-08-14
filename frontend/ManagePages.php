@@ -29,9 +29,9 @@ if(isset($_POST['pageTitleId']))
         echo "<input type=\"text\" name=\"Title\" value=\"" . $activeHeaderContentArray[0][1] . "\"><br/><br/>";
 
         //Radio button for isActive
-        echo "<label>Active</label>";
+        echo "<label>Keep Page</label>";
         echo "<input type=\"radio\" name=\"active\" value=\"1\" "; if($activeHeaderContentArray[0][0] == 1) { echo "checked";} echo ">";
-        echo "<label>InActive</label>";
+        echo "<label>Remove Page</label>";
         echo "<input type=\"radio\" name=\"active\" value=\"0\" "; if ($activeHeaderContentArray[0][0] == 0) { echo "checked";} echo "><br/>";
 
         //Now input boxes for the header and the content in a loop
@@ -58,7 +58,7 @@ if(isset($_POST['pageTitleId']))
 else
 { 
     //They might have changed some values in the page
-    if(isset($_POST['submit']))
+    if(isset($_POST['PageId']))
     {
         //Check if they changed the value of activity. This is based in the webpage table.
         ChangeWebPageInformation($_POST['active'], $_POST['Title'], $_POST['PageId']);
@@ -74,7 +74,7 @@ else
             ChangeContentInformation($contentid, $header, $content);
         }
 
-        echo "Changes Saved!";
+        echo "<h1>Changes Saved!</h1>";
     }
 
     
@@ -98,6 +98,14 @@ else
     echo "</select>";
     echo "<button type=\"submit\" name=\"submit\">Submit</button>";
     echo "</form>";
+
+    //Maybe to add a page
+    echo '<form method="post" action="/frontend/AddPage.php">';
+    echo '<label>Adding Page</label><br/>';
+    echo '<label>Paragraph Amount</label>';
+    echo '<input type="number" name="paragraphCount"/>';
+    echo "<button type=\"submit\" name=\"submit\">Submit</button>";
+    echo '</form>';
 }
 
 
