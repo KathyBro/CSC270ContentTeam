@@ -3,12 +3,13 @@
 $title = "Manage Pages";
 include_once "MyHeader.php";
 include_once "..\backend\Helper.php";
+
 ?>
 
 <?php
 
-if(isset($_POST['pageTitleId']))
-{ //They have selected a page they want to change, need to fill out info
+
+if (isset($_POST['pageTitleId'])) { //They have selected a page they want to change, need to fill out info
     try {
         $id = (int)$_POST['pageTitleId'];
         $activeHeaderContentArray = GetPageContentById($id);
@@ -18,6 +19,7 @@ if(isset($_POST['pageTitleId']))
         //index, 0 = Header
         //index, 1 = Content
         //index, 2 = ContentId;
+
 
         //We need to have a form
         echo "
@@ -30,13 +32,20 @@ if(isset($_POST['pageTitleId']))
 
         //Radio button for isActive
         echo "<label>Keep Page</label>";
-        echo "<input type=\"radio\" name=\"active\" value=\"1\" "; if($activeHeaderContentArray[0][0] == 1) { echo "checked";} echo ">";
+        echo "<input type=\"radio\" name=\"active\" value=\"1\" ";
+        if ($activeHeaderContentArray[0][0] == 1) {
+            echo "checked";
+        }
+        echo ">";
         echo "<label>Remove Page</label>";
-        echo "<input type=\"radio\" name=\"active\" value=\"0\" "; if ($activeHeaderContentArray[0][0] == 0) { echo "checked";} echo "><br/>";
+        echo "<input type=\"radio\" name=\"active\" value=\"0\" ";
+        if ($activeHeaderContentArray[0][0] == 0) {
+            echo "checked";
+        }
+        echo "><br/>";
 
         //Now input boxes for the header and the content in a loop
-        for ($i = 1; $i < sizeof($activeHeaderContentArray); $i++)
-        {
+        for ($i = 1; $i < sizeof($activeHeaderContentArray); $i++) {
             //Header box
             echo "<label>Header</label>";
             echo "<input type=\"text\" name=\"Header" . $activeHeaderContentArray[$i][2] . "\" value=\"" . $activeHeaderContentArray[$i][0] . "\"><br/>";
@@ -48,26 +57,19 @@ if(isset($_POST['pageTitleId']))
 
         echo '<button type="submit" name="submit" value="submit">Submit</button>';
         echo '</form>';
-    }
-    catch (Exception $e)
-    {
+    } catch (Exception $e) {
         echo "What are you doing such that you didn't give me an integer for the id?";
     }
-
-}
-else
-{ 
+} else {
     //They might have changed some values in the page
-    if(isset($_POST['PageId']))
-    {
+    if (isset($_POST['PageId'])) {
         //Check if they changed the value of activity. This is based in the webpage table.
         ChangeWebPageInformation($_POST['active'], $_POST['Title'], $_POST['PageId']);
 
         //Change the content
         //We need to find the id
         $keys = array_keys($_POST);
-        for($i = 3; $i < sizeof($keys) - 1; $i+= 2)
-        {
+        for ($i = 3; $i < sizeof($keys) - 1; $i += 2) {
             $contentid = substr($keys[$i], 6);
             $header = $_POST[$keys[$i]]; //Header
             $content = $_POST[$keys[$i + 1]]; //Content
@@ -77,22 +79,45 @@ else
         echo "<h1>Changes Saved!</h1>";
     }
 
-    
+    $style1 = "1"; 
+    $style2 = "2"; 
+    $style3 = "3"; 
+
+
+    if(isset($_POST['styleOne'])) { 
+        
+        $_SESSION['styleChoice'] = $style1;
+        echo $_SESSION['styleChoice'];
+        
+    } 
+    if(isset($_POST['styleTwo'])) { 
+     
+        $_SESSION['styleChoice'] = $style2;
+        echo $_SESSION['styleChoice'];
+    } 
+    if(isset($_POST['styleThree'])) { 
+        
+        $_SESSION['styleChoice'] = $style3;
+        echo $_SESSION['styleChoice'];  
+    } 
+
     //If we don't know what page we are changing yet, select one
     //Gotta get all the different pages
     $pageArray = GetAllPageTitles();
-
+    echo "<form method='post'><h3>Select a style for all pages</h3>  <input type='submit' name='styleOne'
+    value='Style One'/>  <input type='submit' name='styleTwo'
+    value='Style Two'/> <input type='submit' name='styleThree' 
+    value='Style Three'/></form> ";
     echo "
     <form method=\"post\" action=\"/frontend/ManagePages.php\">
     <label>Select a page to change: </label><br/>
     <select name=\"pageTitleId\">
     ";
 
-    for($i = 0; $i < sizeof($pageArray); $i++)
-    {
+    for ($i = 0; $i < sizeof($pageArray); $i++) {
         $id = $i + 1;
         echo "<option value=\"" . $id . "\">"
-        . $pageArray[$i] . "</option>";
+            . $pageArray[$i] . "</option>";
     }
 
     echo "</select>";

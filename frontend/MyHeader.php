@@ -7,17 +7,20 @@
 ?>
 
 <?php
-$styleChoice = 1;
+$styleChoice = "1";
+
 //Here, we'll check what style has been selected.
-if (isset($_COOKIE["StyleChoice"])) 
-{
-    $styleChoice = $_COOKIE["StyleChoice"];
-}
+if (isset($_SESSION['styleChoice'])) 
+{ 
+    $styleChoice = $_SESSION["styleChoice"];
+
+ }
 else
 {
-    $_COOKIE["StyleChoice"] = $styleChoice;
-}
-
+     $_SESSION["styleChoice"] = $styleChoice;
+    
+ }
+//  $_SESSION['styleChoice'] = $styleChoice;
 
 ?>
 
@@ -28,6 +31,7 @@ else
     <!-- We'll need to change the style based on admin's selection -->
     <?php
         echo '<link rel="stylesheet" type="text/css" href="' . $styleChoice . 'Style.css">';
+        echo $styleChoice; 
     ?>
 </head>
 
