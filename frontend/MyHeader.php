@@ -41,7 +41,7 @@ else
         $dbConn = ConnGet();
         $webPages = GetPagesWithChildren($dbConn);
         $contentArray = mySqli_fetch_all($webPages, MYSQLI_ASSOC);
-        $linkTemplate = "/frontend/Index.php?PageId=";
+        $linkTemplate = "./Index.php?PageId=";
 
         foreach ($contentArray as $index => $row) {
             //Check if first element
