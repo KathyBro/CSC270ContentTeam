@@ -3,7 +3,6 @@
 $title = "Manage Pages";
 include_once "MyHeader.php";
 include_once "..\backend\Helper.php";
-
 ?>
 
 <?php
@@ -79,35 +78,15 @@ if (isset($_POST['pageTitleId'])) { //They have selected a page they want to cha
         echo "<h1>Changes Saved!</h1>";
     }
 
-    $style1 = "1"; 
-    $style2 = "2"; 
-    $style3 = "3"; 
 
-
-    if(isset($_POST['styleOne'])) { 
-        
-        $_SESSION['styleChoice'] = $style1;
-        echo $_SESSION['styleChoice'];
-        
-    } 
-    if(isset($_POST['styleTwo'])) { 
-     
-        $_SESSION['styleChoice'] = $style2;
-        echo $_SESSION['styleChoice'];
-    } 
-    if(isset($_POST['styleThree'])) { 
-        
-        $_SESSION['styleChoice'] = $style3;
-        echo $_SESSION['styleChoice'];  
-    } 
+   
 
     //If we don't know what page we are changing yet, select one
     //Gotta get all the different pages
     $pageArray = GetAllPageTitles();
-    echo "<form method='post'><h3>Select a style for all pages</h3>  <input type='submit' name='styleOne'
-    value='Style One'/>  <input type='submit' name='styleTwo'
-    value='Style Two'/> <input type='submit' name='styleThree' 
-    value='Style Three'/></form> ";
+
+
+    echo "<form><a href=http://localhost/frontend/ManagePages.php?styleChoice=1>Style 1</a> <a href=http://calc.mypc.com/frontend/ManagePages.php?styleChoice=2>Style 2</a></form>";
     echo "
     <form method=\"post\" action=\"/frontend/ManagePages.php\">
     <label>Select a page to change: </label><br/>

@@ -1,6 +1,6 @@
 <?php
-    session_start();
-
+     session_start();
+    
     include_once "..\backend\DbConnector.php";
     include_once "..\backend\Helper.php";
     //$listOfHobbies <- needed for Nav generation
@@ -10,17 +10,12 @@
 $styleChoice = "1";
 
 //Here, we'll check what style has been selected.
-if (isset($_SESSION['styleChoice'])) 
+ if (isset($_GET['styleChoice'])) 
 { 
-    $styleChoice = $_SESSION["styleChoice"];
-
- }
-else
-{
-     $_SESSION["styleChoice"] = $styleChoice;
+    $_SESSION['styleChoice'] = $_GET['styleChoice']; 
+    $styleChoice = $_SESSION['styleChoice'];
     
  }
-//  $_SESSION['styleChoice'] = $styleChoice;
 
 ?>
 
@@ -30,8 +25,7 @@ else
     <title><?php echo $title?></title>
     <!-- We'll need to change the style based on admin's selection -->
     <?php
-        echo '<link rel="stylesheet" type="text/css" href="' . $styleChoice . 'Style.css">';
-        echo $styleChoice; 
+        echo '<link rel="stylesheet" type="text/css" href="' . $_SESSION['styleChoice'] . 'Style.css">';
     ?>
 </head>
 
