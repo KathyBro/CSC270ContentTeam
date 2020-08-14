@@ -1,16 +1,16 @@
 <?php
 
 //Constants
-DEFINE ('DB_USER', 'databaseUser');
-DEFINE ('DB_PSWD', 'user123');
-DEFINE ('DB_SERVER', 'localhost');
-DEFINE ('DB_NAME', 'ContentTeamDatabase');
+DEFINE('DB_USER', 'root');
+DEFINE('DB_PSWD', '');
+DEFINE('DB_SERVER', 'localhost');
+DEFINE('DB_NAME', 'contentteamdatabase');
 
 function ConnGet() {
     // $dbConn will contain a resource link to the database
     // @ Don't display error
     $dbConn = @mysqli_connect(DB_SERVER, DB_USER, DB_PSWD, DB_NAME, 3308)
-    OR die('Failed to connect to MySQL ' . DB_SERVER . '::' . DB_NAME . ' : ' . mysqli_connect_error()); // Display messge and end PHP script
+        or die('Failed to connect to MySQL ' . DB_SERVER . '::' . DB_NAME . ' : ' . mysqli_connect_error()); // Display messge and end PHP script
 
     return $dbConn;
 }
@@ -34,10 +34,10 @@ function GetPagesWithChildren($dbConn)
 {
     $query = "SELECT * FROM 
     (
-    SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', 'None' as 'Child Id', 'None' as 'Child Title', Parent.isActive as 'isActive' 
+    SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', 'None' as 'Child Id', 'None' as 'Child Title' 
     FROM webpages Parent 
     WHERE Parent.ParentPage = 0 
-    UNION SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', Child.id as 'Child Id', Child.Title as 'Child Title', Parent.isActive as 'isActive' 
+    UNION SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', Child.id as 'Child Id', Child.Title as 'Child Title' 
     FROM webpages Parent 
     JOIN webpages Child 
     ON Parent.id = Child.ParentPage
@@ -56,7 +56,7 @@ function GetPageContentAndActivityById($dbConn, $id)
 
 function ChangeWebPageTitleAndActivity($dbConn, $activity, $title, $id)
 {
-    $query = "UPDATE WebPages SET isActive=" . $activity . ", Title=\"" . $title . "\" WHERE id=" . $id . ";";
+    $query = "UPDATE WebPages SET isActive=" . $activity . ", Title=\"" . $title . " WHERE id=" . $id . ";";
 
     return mysqli_query($dbConn, $query);
 }

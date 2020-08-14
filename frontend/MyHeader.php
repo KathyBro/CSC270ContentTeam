@@ -1,23 +1,21 @@
 <?php
-    session_start();
-
+     session_start();
+    
     include_once "..\backend\DbConnector.php";
     include_once "..\backend\Helper.php";
     //$listOfHobbies <- needed for Nav generation
 ?>
 
 <?php
-$styleChoice = 1;
-//Here, we'll check what style has been selected.
-if (isset($_COOKIE["StyleChoice"])) 
-{
-    $styleChoice = $_COOKIE["StyleChoice"];
-}
-else
-{
-    $_COOKIE["StyleChoice"] = $styleChoice;
-}
+//  $_SESSION['styleChoice'] = "1";
 
+//Here, we'll check what style has been selected.
+ if (isset($_GET['styleChoice'])) 
+{ 
+    $_SESSION['styleChoice'] = $_GET['styleChoice']; 
+    // $styleChoice = $_SESSION['styleChoice'];
+    
+ }
 
 ?>
 
@@ -27,14 +25,16 @@ else
     <title><?php echo $title?></title>
     <!-- We'll need to change the style based on admin's selection -->
     <?php
-        echo '<link rel="stylesheet" type="text/css" href="' . $styleChoice . 'Style.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . $_SESSION['styleChoice'] . 'Style.css">';
+        // echo $_SESSION['styleChoice']; 
     ?>
 </head>
 
 <body>
 
-<h1>Content Hobbyists</h1>
+<h1 id="main_header">Content Hobbyists</h1>
 
+<div id="nav_holder">
 <nav>
     <?php
         //List of pages
@@ -45,47 +45,44 @@ else
 
         foreach ($contentArray as $index => $row) {
             //Check if first element
-            if($contentArray[$index]["isActive"] != 0)
-            {
-
-                if ($index == 0) {
-                    //Check if the next element is not a child of this one
-                    if ($contentArray[$index + 1]["Child Id"] == "None") {
-                        echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+            if ($index == 0) {
+                //Check if the next element is not a child of this one
+                if ($contentArray[$index + 1]["Child Id"] == "None") {
+                    echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                }
+                //If the next element is a child (Since it's sorted to have all children be placed after the parent)
+                else {
+                    echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
+                    echo "<div class='Drop_Down_Button'>^</div>";
+                    echo "<div class='Drop_Down_Menu'>";
+                }
+            }
+            //check if any other element
+            elseif ($index != sizeof($contentArray) - 1) {
+                
+                if ($contentArray[$index - 1]["Child Id"] != "None") {
+                    if ($contentArray[$index]["Child Id"] != "None") {
+                        if ($contentArray[$index + 1]["Child Id"] != "None") {
+                            echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                        }
+                        else {
+                            echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                            echo "</div>";
+                        }
                     }
-                    //If the next element is a child (Since it's sorted to have all children be placed after the parent)
-                    else {
+                    elseif ($contentArray[$index + 1]["Child Id"] != "None") {
                         echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
                         echo "<div class='Drop_Down_Button'>^</div>";
                         echo "<div class='Drop_Down_Menu'>";
                     }
-                }
-                //check if any other element
-                elseif ($index != sizeof($contentArray) - 1) {
-                    
-                    if ($contentArray[$index - 1]["Child Id"] != "None") {
-                        if ($contentArray[$index]["Child Id"] != "None") {
-                            if ($contentArray[$index + 1]["Child Id"] != "None") {
-                                echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
-                            }
-                            else {
-                                echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
-                                echo "</div>";
-                            }
-                        }
-                        elseif ($contentArray[$index + 1]["Child Id"] != "None") {
-                            echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
-                            echo "<div class='Drop_Down_Button'>^</div>";
-                            echo "<div class='Drop_Down_Menu'>";
-                        }
-                        else {
-                            echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
-                        }
+                    else {
+                        echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
                     }
-                    elseif ($contentArray[$index]["Child Id"] != "None") {
-                        if($contentArray[$index + 1]["Child Id"] != "None") {
-                            echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
-                        }
+                }
+                elseif ($contentArray[$index]["Child Id"] != "None") {
+                    if($contentArray[$index + 1]["Child Id"] != "None") {
+                        echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
+                    }
                     else {
                         echo "<a href=" . $linkTemplate . $row["Child Id"] . ">" . $row["Child Title"] . "</a>";
                         echo "</div>";
@@ -110,9 +107,8 @@ else
                     echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
                 }
             }
-            }
         }
-        
+
         //Offer Login if no one is logged in, else logout
         if(!isset($_SESSION['userId']))
         {
@@ -122,7 +118,7 @@ else
         {
             echo "<a href=\"Login.php\">Log out</a>";
         }
-        
+
         //Offer ManagePages if they are an admin
         if(isset($_SESSION['isAdmin']))
         {
@@ -134,3 +130,4 @@ else
 
     ?>
 </nav>
+</div>

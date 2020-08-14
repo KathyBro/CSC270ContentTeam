@@ -1,0 +1,167 @@
+
+  
+p {
+    color: rgb(248, 248, 248);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  a {
+    color: #eed0fc;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    border-bottom: 2px #ffffff dashed;
+    text-shadow: 2px 1px #831ce4;
+    text-align: center;
+  }
+  
+  .style_btn {
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    border-bottom: 2px #ffffff double;
+    text-shadow: none;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  
+  .style_btn:hover {
+    border-bottom: 2px #c300ff double;
+  }
+  
+  #style_label {
+    font-size: 20px;
+    color: rgb(252, 255, 78);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  select {
+    height: 30px;
+    width: 100px;
+    font-style: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+  
+  .mini_label {
+    color: #c394cc;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .form_wrap {
+    position: relative;
+    text-align: center;
+    border-style: dotted;
+    border-color: rgb(110, 100, 122);
+    border-width: 3px;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  
+  #input_par {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  #input_par[type="number"]:focus {
+    background-color: rgb(224, 185, 250);
+    border: 3px solid rgb(236, 248, 122);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+  }
+  
+  #main_header {
+    color: #7d71eb;
+    text-shadow: 1px 1px rgb(255, 255, 255);
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 5px;
+  }
+  
+  a:active {
+    color: red;
+  }
+  
+  a:hover {
+    color: #fcff33;
+    border-bottom: 2px #ddcb25 dashed;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    text-decoration: underline dashed;
+    text-shadow: 2px 1px #24282c;
+  }
+  
+  label {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline overline dotted snow;
+  }
+  
+  #login_form {
+    text-align: center;
+    justify-content: center;
+    display: inline;
+    margin-top: 15px;
+    height: 100px;
+    width: 500px;
+  }
+  
+  input {
+    border-radius: 2px;
+    margin-top: 15px;
+    height: 27px;
+    width: 150px;
+    border-radius: 25px;
+    padding-left: 10px;
+  }
+  
+  #pass_label {
+    margin-left: 20px;
+  }
+  
+  input[type="text"]:focus {
+    background-color: rgb(224, 185, 250);
+    border: 3px solid rgb(236, 248, 122);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+  }
+  
+  input[type="password"]:focus {
+    background-color: rgb(224, 185, 250);
+    border: 3px solid rgb(236, 248, 122);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+  }
+  
+  h1 {
+    color: rgb(230, 217, 255);
+    text-shadow: 1px 1px rgb(46, 44, 44);
+    text-align: center;
+    font-size: 25px;
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+  
+
+html {
+  background-image: url("https://i.pinimg.com/originals/f6/15/74/f615740d8ec75ad36e322ecd9da8b129.gif");
+  background-color: rgb(224, 190, 195);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 800px;
+  text-align: center;
+  justify-content: center;
+}
