@@ -34,10 +34,10 @@ function GetPagesWithChildren($dbConn)
 {
     $query = "SELECT * FROM 
     (
-    SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', 'None' as 'Child Id', 'None' as 'Child Title' 
+    SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', 'None' as 'Child Id', 'None' as 'Child Title', Parent.isActive as 'isActive' 
     FROM webpages Parent 
     WHERE Parent.ParentPage = 0 
-    UNION SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', Child.id as 'Child Id', Child.Title as 'Child Title' 
+    UNION SELECT Parent.id as 'Parent Id', Parent.Title as 'Parent Title', Child.id as 'Child Id', Child.Title as 'Child Title', Parent.isActive as 'isActive' 
     FROM webpages Parent 
     JOIN webpages Child 
     ON Parent.id = Child.ParentPage
@@ -56,7 +56,7 @@ function GetPageContentAndActivityById($dbConn, $id)
 
 function ChangeWebPageTitleAndActivity($dbConn, $activity, $title, $id)
 {
-    $query = "UPDATE WebPages SET isActive=" . $activity . ", Title=\"" . $title . " WHERE id=" . $id . ";";
+    $query = "UPDATE WebPages SET isActive=" . $activity . ", Title=\"" . $title . "\" WHERE id=" . $id . ";";
 
     return mysqli_query($dbConn, $query);
 }

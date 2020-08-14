@@ -11,6 +11,7 @@ include_once "..\backend\Helper.php";
 if (isset($_POST['pageTitleId'])) { //They have selected a page they want to change, need to fill out info
     try {
         $id = (int)$_POST['pageTitleId'];
+        echo $id;
         $activeHeaderContentArray = GetPageContentById($id);
         //0, 0 = isActive
         //0, 1 = Title
