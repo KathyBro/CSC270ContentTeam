@@ -56,3 +56,12 @@ INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (6, '
 
 
 INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (6, 'Item List', 'Yarn, crochet hook, and probably two hands', 0);
+
+INSERT INTO contenttable (`ParentPageId`,`Header`,`Content`,`SortOrder`) 
+VALUES (5, "Fishing Is Fun", "Fishing is a fun activity for the whole family! It's as easy has casting out a line and kicking back into a lawn chair. The only thing to worry about is bad weather and snags!", 0);
+INSERT INTO contenttable (`ParentPageId`,`Header`,`Content`,`SortOrder`) 
+VALUES (5, "Getting Started", "First, you have to know what you're trying to catch. Different areas require different rigs. A lake pole will snap if you use it in the ocean! And a catfish pole will make catching trout a no fun sport.", 0);
+INSERT INTO contenttable (`ParentPageId`,`Header`,`Content`,`SortOrder`) 
+VALUES (5, "Bait & Tackle", "Tackle is the same way, bait and lures should be selected for the fish you're aiming for: Bass love shiny lures that look like real fish, Trout bite on shiny spoons, and catfish love the stench of bait!", 0);
+INSERT INTO contenttable (`ParentPageId`,`Header`,`Content`,`SortOrder`) 
+VALUES (5, "", "Remember to find an appropriate tackle setup that is weighted correclty for your pole, reel, line, hooks, weights, and baits. Remember: a Bad setup will cost you money, time, and most importantly: Fish!", 0);
