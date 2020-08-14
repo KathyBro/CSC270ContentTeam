@@ -41,7 +41,7 @@ else
         $dbConn = ConnGet();
         $webPages = GetPagesWithChildren($dbConn);
         $contentArray = mySqli_fetch_all($webPages, MYSQLI_ASSOC);
-        $linkTemplate = "/Index.php?PageId=";
+        $linkTemplate = "/frontend/Index.php?PageId=";
 
         foreach ($contentArray as $index => $row) {
             //Check if first element
@@ -106,6 +106,25 @@ else
                 else {
                     echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
                 }
+            }
+        }
+
+        //Offer Login if no one is logged in, else logout
+        if(!isset($_SESSION['userId']))
+        {
+            echo "<a href=\"Login.php\">Login</a>";
+        }
+        else
+        {
+            echo "<a href=\"Login.php\">Log out</a>";
+        }
+
+        //Offer ManagePages if they are an admin
+        if(isset($_SESSION['isAdmin']))
+        {
+            if($_SESSION['isAdmin'] == 1)
+            {
+                echo "<a href=\"ManagePages.php\">Manage Pages</a>";
             }
         }
 

@@ -61,4 +61,32 @@ function ChangeWebPageTitleAndActivity($dbConn, $activity, $title, $id)
     return mysqli_query($dbConn, $query);
 }
 
+function UpdateContentTable($dbConn, $id, $header, $content)
+{
+    $query = "UPDATE ContentTable SET Header=\"" . $header . "\", Content=\"" . $content . "\" WHERE id=\"" . $id . "\";";
+
+    return mysqli_query($dbConn, $query);
+}
+
+function InsertIntoWebPages($dbConn, $title, $parentPage, $sortOrder, $isActive)
+{
+    $query = "INSERT INTO WebPages (Title, ParentPage, SortOrder, isActive) VALUES ('" . $title . "', " . $parentPage . ", " . $sortOrder . ", " . $isActive . ");";
+
+    return mysqli_query($dbConn, $query);
+}
+
+function FindWebPageIdByTitle($dbConn, $title)
+{
+    $query = "SELECT id FROM WebPages WHERE Title=\"" . $title . "\";";
+
+    return mysqli_query($dbConn, $query);
+}
+
+function AddingContentTable($dbConn, $parentid, $header, $content, $sortOrder)
+{
+    $query = "INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (" . $parentid . ", '" . $header . "', '" . $content . "', " . $sortOrder . ");";
+
+    return mysqli_query($dbConn, $query);
+}
+
 ?>
