@@ -73,7 +73,36 @@
         mysqli_close($dbConn);
     }
 
+    function InsertWebPage($title, $parentPage, $sortOrder)
+    {
+        $dbConn = ConnGet();
 
+        InsertIntoWebPages($dbConn, $title, $parentPage, $sortOrder, 1);
+
+        mysqli_close($dbConn);
+    }
+
+    function FindPageIdByTitle($title)
+    {
+        $dbConn = ConnGet();
+
+        $returnedContent = FindWebPageIdByTitle($dbConn, $title);
+        $tableArray = mysqli_fetch_array($returnedContent);
+        $id = $tableArray['id'];
+
+        mysqli_close($dbConn);
+
+        return $id;
+    }
+
+    function InsertContentTable($parentId, $header, $content, $sortOrder)
+    {
+        $dbConn = ConnGet();
+
+        AddingContentTable($dbConn, $parentId, $header, $content, $sortOrder);
+
+        mysqli_close($dbConn);
+    }
 
 
 ?>
