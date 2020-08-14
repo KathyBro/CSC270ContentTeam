@@ -11,7 +11,6 @@ include_once "..\backend\Helper.php";
 if (isset($_POST['pageTitleId'])) { //They have selected a page they want to change, need to fill out info
     try {
         $id = (int)$_POST['pageTitleId'];
-        echo $id;
         $activeHeaderContentArray = GetPageContentById($id);
         //0, 0 = isActive
         //0, 1 = Title
@@ -80,17 +79,19 @@ if (isset($_POST['pageTitleId'])) { //They have selected a page they want to cha
     }
 
 
-   
+
 
     //If we don't know what page we are changing yet, select one
     //Gotta get all the different pages
     $pageArray = GetAllPageTitles();
 
 
-    echo "<form><a href=http://localhost/frontend/ManagePages.php?styleChoice=1>Style 1</a> <a href=http://calc.mypc.com/frontend/ManagePages.php?styleChoice=2>Style 2</a></form>";
+    echo "<form class='form_wrap'><label id='style_label'>Select a Style: </label><a class='style_btn' href=http://localhost/frontend/ManagePages.php?styleChoice=1>Style 1</a> 
+        <a class='style_btn' href=http://localhost/frontend/ManagePages.php?styleChoice=2>Style 2</a> 
+        <a class='style_btn' href=http://localhost/frontend/ManagePages.php?styleChoice=3>Style 3</a> </form>";
     echo "
     <form method=\"post\" action=\"/frontend/ManagePages.php\">
-    <label>Select a page to change: </label><br/>
+    <label class='mini_label'>Select a page to change: </label><br/>
     <select name=\"pageTitleId\">
     ";
 
@@ -106,9 +107,8 @@ if (isset($_POST['pageTitleId'])) { //They have selected a page they want to cha
 
     //Maybe to add a page
     echo '<form method="post" action="/frontend/AddPage.php">';
-    echo '<label>Adding Page</label><br/>';
-    echo '<label>Paragraph Amount</label>';
-    echo '<input type="number" name="paragraphCount"/>';
+    echo '<label class="mini_label">Paragraph Amount</label>';
+    echo '<input id="input_par" type="number" name="paragraphCount"/>';
     echo "<button type=\"submit\" name=\"submit\">Submit</button>";
     echo '</form>';
 }

@@ -23,14 +23,15 @@ if(!isset($_SESSION['userId'])) {
     else
     {
         echo "
-        <form method=\"post\" action=\"/frontend/Login.php\">
-        <label>Username:</label>
-        <input type=\"text\" name=\"username\"/>
+        <div id='login_form'>
+        <form  method=\"post\" action=\"/frontend/Login.php\">
+        <label id='username_label'>Username:</label>
+        <input id='username_input' type=\"text\" name=\"username\"/>
         
-        <label>Password:</label>
-        <input type=\"password\" name=\"password\"/>
+        <label id='pass_label'>Password:</label>
+        <input id='pass_input' type=\"password\" name=\"password\"/>
         <button type=\"submit\" value=\"Submit\">Submit</button>
-        </form>";
+        </form></div>";
     }
 }
 else if (isset($_SESSION['userId'])) //We'll log them out if they go here again.

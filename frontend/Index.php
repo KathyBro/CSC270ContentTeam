@@ -1,5 +1,4 @@
 <?php
-    $title = "Content Hobbyists";
     include_once 'MyHeader.php';
     // Move to Index
     $PageId = "0";
