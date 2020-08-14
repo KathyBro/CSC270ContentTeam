@@ -19,7 +19,7 @@ ParentPage INT DEFAULT 0,
 SortOrder INT DEFAULT 2,
 isActive BINARY NOT NULL
 );
---0 is false, 1 is true
+--0 is false, 1 is true;
 
 CREATE TABLE IF NOT EXISTS ContentTable(
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -29,7 +29,8 @@ Content VARCHAR(225),
 SortOrder INT
 );
 
---Sample Data
+--Sample Data;
+
 INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('adminUser', 'adminpswd', 1, 1);
 INSERT INTO UserTable(username, password, isAdmin, isActive) VALUES ('RandomGuy', 'randompass', 0, 1);
 
