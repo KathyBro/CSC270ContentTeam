@@ -56,3 +56,10 @@ INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (6, '
 
 
 INSERT INTO ContentTable (ParentPageId, Header, Content, SortOrder) VALUES (6, 'Item List', 'Yarn, crochet hook, and probably two hands', 0);
+
+INSERT INTO contenttable (`ParentPageId`,`Header`,`Content`,`SortOrder`) 
+VALUES (7, "Play Piano", "Want to find a hobby that is relaxing and fun? Try learning your favoirte song on piano!", 0);
+INSERT INTO contenttable (`ParentPageId`,`Header`,`Content`,`SortOrder`) 
+VALUES (7, "What you'll need", "You'll need a piano of course! You can look online to purchase one and depending on what kind of piano you want it will determine the cost", 0);
+INSERT INTO contenttable (`ParentPageId`,`Header`,`Content`,`SortOrder`) 
+VALUES (7, "Music Sheets & Tutorials", "Next you'll need to find a song you want to learn on piano, you can buy music sheets or you can look up piano tutorials online for free", 0);
