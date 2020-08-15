@@ -34,6 +34,48 @@ a {
   border-bottom: 2px #c300ff double;
 }
 
+.Drop_Down_Button {
+  display: inline;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 20px;
+  color: rgb(242, 250, 166);
+  font-weight: 900;
+  border-bottom: 2px #ffffff double;
+  text-shadow: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #3c73a0;
+  border: #3c73a0 2px solid;
+  border-radius: 2px;
+}
+
+.Drop_Down_Button:hover {
+  color: #e6abfd;
+  border-bottom: 2px #000000 dashed;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+  text-decoration: underline dashed;
+
+}
+
+.Drop_Down_Menu {
+  position: relative;
+  /* left: 50%; */
+  height: 0;
+  opacity: 0;
+  background-color: #3c73a0;
+  border: #3c73a0 solid 5px;
+  display: none;
+}
+
+.Drop_Down_Menu_Show {
+  opacity: 1 !important;
+  height: auto !important;
+  display: block;
+}
+
 #style_label {
   font-size: 20px;
   color: white;

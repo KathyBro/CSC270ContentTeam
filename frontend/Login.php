@@ -18,13 +18,13 @@ if(!isset($_SESSION['userId'])) {
         $_SESSION['userId'] = $userInfo[0]["id"];
         $_SESSION['isAdmin'] = $userInfo[0]["isAdmin"];
 
-        header("Location: /frontend/Index.php?PageId=1");
+        header("Location: Index.php?PageId=1");
     }
     else
     {
         echo "
         <div id='login_form'>
-        <form  method=\"post\" action=\"/frontend/Login.php\">
+        <form  method=\"post\" action=\"Login.php\">
         <label id='username_label'>Username:</label>
         <input id='username_input' type=\"text\" name=\"username\"/>
         

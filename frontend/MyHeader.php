@@ -7,15 +7,22 @@
 ?>
 
 <?php
-//  $_SESSION['styleChoice'] = "1";
-
-//Here, we'll check what style has been selected.
- if (isset($_GET['styleChoice'])) 
-{ 
-    $_SESSION['styleChoice'] = $_GET['styleChoice']; 
-    // $styleChoice = $_SESSION['styleChoice'];
-    
- }
+    //  $_SESSION['styleChoice'] = "1";
+    $styleChoice = "";
+    //Here, we'll check what style has been selected.
+    if (array_key_exists('stylechoice', $_GET)) { 
+        $_SESSION['styleChoice'] = $_GET['styleChoice']; 
+        // $styleChoice = $_SESSION['styleChoice'];
+        $styleChoice = $_SESSION['styleChoice'];
+    }
+    else {
+        if(array_key_exists('styleChoice', $_SESSION)) {
+            $styleChoice = $_SESSION['styleChoice'];
+        }
+        else {
+            $styleChoice = "1";
+        }
+    }
 
 ?>
 
@@ -25,7 +32,7 @@
     <title><?php echo $title?></title>
     <!-- We'll need to change the style based on admin's selection -->
     <?php
-        echo '<link rel="stylesheet" type="text/css" href="' . $_SESSION['styleChoice'] . 'Style.css">';
+        echo '<link rel="stylesheet" type="text/css" href="' . $styleChoice . 'Style.css">';
         // echo $_SESSION['styleChoice']; 
     ?>
 </head>
@@ -53,7 +60,7 @@
                 //If the next element is a child (Since it's sorted to have all children be placed after the parent)
                 else {
                     echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
-                    echo "<div class='Drop_Down_Button'>^</div>";
+                    echo "<div class='Drop_Down_Button' id='" . $row["Parent Title"] ."_Drop_Button'>^</div>";
                     echo "<div class='Drop_Down_Menu'>";
                 }
             }
@@ -72,7 +79,7 @@
                     }
                     elseif ($contentArray[$index + 1]["Child Id"] != "None") {
                         echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
-                        echo "<div class='Drop_Down_Button'>^</div>";
+                        echo "<div class='Drop_Down_Button' id='" . $row["Parent Title"] ."_Drop_Button'>▲</div>";
                         echo "<div class='Drop_Down_Menu'>";
                     }
                     else {
@@ -90,7 +97,7 @@
                 }
                 elseif ($contentArray[$index + 1]["Child Id"] != "None") {
                     echo "<a href=" . $linkTemplate . $row["Parent Id"] . ">" . $row["Parent Title"] . "</a>";
-                    echo "<div class='Drop_Down_Button'>^</div>";
+                    echo "<div class='Drop_Down_Button' id='" . $row["Parent Title"] . "_Drop_Button'>▲</div>";
                     echo "<div class='Drop_Down_Menu'>";
                 }
                 else {
