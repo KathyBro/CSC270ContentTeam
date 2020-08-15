@@ -42,16 +42,18 @@ if (isset($_POST['pageTitleId'])) { //They have selected a page they want to cha
             echo "checked";
         }
         echo "><br/>";
-
-        //Now input boxes for the header and the content in a loop
-        for ($i = 1; $i < sizeof($activeHeaderContentArray); $i++) {
-            //Header box
-            echo "<label>Header</label>";
-            echo "<input type=\"text\" name=\"Header" . $activeHeaderContentArray[$i][2] . "\" value=\"" . $activeHeaderContentArray[$i][0] . "\"><br/>";
-
-            //Content box
-            echo "<label>Content</label>";
-            echo "<textarea rows=\"5\" cols=\"50\" name=\"Content" . $activeHeaderContentArray[$i][2] . "\">" . $activeHeaderContentArray[$i][1] . "</textarea><br/>";
+        
+        if($activeHeaderContentArray != NULL) {
+            //Now input boxes for the header and the content in a loop
+            for ($i = 1; $i < sizeof($activeHeaderContentArray); $i++) {
+                //Header box
+                echo "<label>Header</label>";
+                echo "<input type=\"text\" name=\"Header" . $activeHeaderContentArray[$i][2] . "\" value=\"" . $activeHeaderContentArray[$i][0] . "\"><br/>";
+    
+                //Content box
+                echo "<label>Content</label>";
+                echo "<textarea rows=\"5\" cols=\"50\" name=\"Content" . $activeHeaderContentArray[$i][2] . "\">" . $activeHeaderContentArray[$i][1] . "</textarea><br/>";
+            }
         }
 
         echo '<button type="submit" name="submit" value="submit">Submit</button>';
