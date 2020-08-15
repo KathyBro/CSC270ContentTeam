@@ -38,7 +38,7 @@ else if (isset($_SESSION['userId'])) //We'll log them out if they go here again.
 {
     unset($_SESSION['userId']);
     unset($_SESSION['isAdmin']);
-    header("Location: /frontend/Index.php?PageId=1");
+    header("Location: Index.php?PageId=1");
 }
 
 ?>

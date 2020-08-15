@@ -22,7 +22,7 @@ if (isset($_POST['pageTitleId'])) { //They have selected a page they want to cha
 
         //We need to have a form
         echo "
-        <form method=\"post\" action=\"/frontend/ManagePages.php\">
+        <form method=\"post\" action=\"ManagePages.php\">
         ";
         echo "<input type=\"hidden\" name=\"PageId\" value=\"" . $activeHeaderContentArray[0][2] . "\">";
         //Input box for the title
@@ -90,7 +90,7 @@ if (isset($_POST['pageTitleId'])) { //They have selected a page they want to cha
         <a class='style_btn' href=http://localhost/frontend/ManagePages.php?styleChoice=2>Style 2</a> 
         <a class='style_btn' href=http://localhost/frontend/ManagePages.php?styleChoice=3>Style 3</a> </form>";
     echo "
-    <form method=\"post\" action=\"/frontend/ManagePages.php\">
+    <form method=\"post\" action=\"ManagePages.php\">
     <label class='mini_label'>Select a page to change: </label><br/>
     <select name=\"pageTitleId\">
     ";
@@ -106,7 +106,7 @@ if (isset($_POST['pageTitleId'])) { //They have selected a page they want to cha
     echo "</form>";
 
     //Maybe to add a page
-    echo '<form method="post" action="/frontend/AddPage.php">';
+    echo '<form method="post" action="/AddPage.php">';
     echo '<label class="mini_label">Paragraph Amount</label>';
     echo '<input id="input_par" type="number" name="paragraphCount"/>';
     echo "<button type=\"submit\" name=\"submit\">Submit</button>";
