@@ -10,7 +10,7 @@
     //  $_SESSION['styleChoice'] = "1";
     $styleChoice = "";
     //Here, we'll check what style has been selected.
-    if (array_key_exists('stylechoice', $_GET)) { 
+    if (array_key_exists('styleChoice', $_GET)) { 
         $_SESSION['styleChoice'] = $_GET['styleChoice']; 
         // $styleChoice = $_SESSION['styleChoice'];
         $styleChoice = $_SESSION['styleChoice'];
